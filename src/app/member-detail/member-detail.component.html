@@ -1,0 +1,29 @@
+ 
+
+  <div class="container" style="margin-top: 10%;" >
+		<div class="main-body">
+			<div class="row">
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex flex-column align-items-center text-center">
+								<img [src]="member.imageUrl" alt="Admin" class="rounded-circle p-1" width="110">
+								<div class="mt-3" *ngIf=" this.member">
+									<h4>{{member.firstname +" "+ member.lastname }}</h4>
+									<p class="text-secondary mb-1">{{member.role}}</p>
+									<p class="text-muted font-size-sm">{{member.email}}</p>
+									<button class="btn btn-outline-primary">Message</button>
+								</div>
+							</div>
+							<hr class="my-4">
+							 
+						</div>
+					</div>
+				</div>
+
+        
+			</div>
+		</div>
+	</div>
+
+ 

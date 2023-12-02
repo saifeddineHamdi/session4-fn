@@ -1,0 +1,152 @@
+ 
+
+<form style="width: 50%;" name="form" (ngSubmit)="f.form.valid && addMember()" #f="ngForm" novalidate>
+  <div class="row">
+    <div class="col">
+      <label for="nom">First name:</label>
+      <input type="text" class="form-control" placeholder="First name"
+             [(ngModel)]="newMember.firstname" [ngModelOptions]="{standalone: true}" required
+             #firstname="ngModel">
+      <div style="color: red;" class="alert-danger" *ngIf="f.submitted && firstname.invalid">
+        <div *ngIf="firstname.errors?.['required']">First name is required</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <label for="prenom">Last name:</label>
+      <input type="text" class="form-control" placeholder="Last name"
+             [(ngModel)]="newMember.lastname" [ngModelOptions]="{standalone: true}" required
+             #lastname="ngModel">
+      <div style="color: red;" class="alert-danger" *ngIf="f.submitted && lastname.invalid">
+        <div *ngIf="lastname.errors?.['required']">Last name is required</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label for="prenom">Phone Number:</label>
+      <input type="text" class="form-control" placeholder="Phone Number"
+             [(ngModel)]="newMember.phone" [ngModelOptions]="{standalone: true}" required
+             #phone="ngModel">
+      <div style="color: red;" class="alert-danger" *ngIf="f.submitted && phone.invalid">
+        <div *ngIf="phone.errors?.['required']">Phone is required</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <label for="prenom">Email:</label>
+      <input type="text" class="form-control" placeholder="Email"
+             [(ngModel)]="newMember.email" [ngModelOptions]="{standalone: true}" required
+             #email="ngModel">
+      <div style="color: red;" class="alert-danger" *ngIf="f.submitted && email.invalid">
+        <div *ngIf="email.errors?.['required']">Email is required</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label for="prenom">Image URL:</label>
+      <input type="text" class="form-control" placeholder="Image URL"
+             [(ngModel)]="newMember.imageUrl" [ngModelOptions]="{standalone: true}" required
+             #imageUrl="ngModel">
+      <div style="color: red;" class="alert-danger" *ngIf="f.submitted && imageUrl.invalid">
+        <div *ngIf="imageUrl.errors?.['required']">Image URL is required</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <label for="prenom">Role:</label>
+      <select class="form-control" [(ngModel)]="newMember.role" [ngModelOptions]="{standalone: true}" required
+              #role="ngModel">
+        <option selected disabled>Select role</option>
+        <option>Prisedent</option>
+        <option>Secretaire gn</option>
+        <option>Marketing</option>
+        <option>Finances</option>
+        <option>Responsable iot</option>
+        <option>Responsable dev</option>
+        <option>Member actif</option>
+        <option>Member</option>
+      </select>
+      <div style="color: red;" class="alert-danger" *ngIf="f.submitted && role.invalid">
+        <div *ngIf="role.errors?.['required']">Role is required</div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <button style="margin-left: 40%;" type="submit" class="btn btn-info">Ajouter Member</button>
+
+  <div class="alert alert-success" role="alert" style="text-align: center; margin-top: 5%;" *ngIf="isadd">
+    Member a bien été ajouté.
+  </div>
+</form>
+
+
+ 
+   
+  
+  
+  
+ 
+
+ 
+ 
+
+
+  <div  style=" text-align: center; margin-top: 10%; ">
+
+    <h1>Liste des membres </h1>
+ 
+  </div>
+
+
+
+
+
+
+
+  <div class="tab">
+ 
+ 
+    <table class="table table-bordered">
+     <thead class="table-secondary">
+       <tr>
+         <th scope="col">#</th>
+         <th scope="col">Image</th>
+         <th scope="col">First Name</th>
+         <th scope="col">Last Name</th>
+         <th scope="col">Phone</th>
+         <th scope="col">Email</th>
+         <th scope="col">Role</th>
+        
+         <th scope="col">action</th>
+       </tr>
+     </thead>
+     <tbody>
+      
+       <tr *ngFor="let member of members; let i = index">
+         <th scope="row">{{ i + 1 }}</th>
+         <td> <img [src]="member.imageUrl" width="55px" height="50px"  > </td>
+         <td style="color: red;"> {{ member.firstname }}</td>
+         <td> {{ member.lastname }}</td>
+         <td style="color: red;"> {{ member.phone }}</td>
+         <td> {{ member.email }}</td>
+         <td style="color: red;"> {{ member.role }}</td>
+         <td> 
+        
+         <button  (click)="showdetail(member.id)" type="button" class="btn btn-info">detail</button> 
+         &nbsp; 
+     
+          <button  (click)="deleteMemeber(member.id)" type="button" class="btn btn-danger">delete</button>   
+         </td>
+        </tr>
+        
+     </tbody>
+   </table>
+  
+  </div>
+  
+ 

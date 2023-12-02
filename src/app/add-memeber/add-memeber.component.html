@@ -1,0 +1,125 @@
+ 
+
+  <form style="width: 50%;"  
+  
+  name="form" (ngSubmit)=" f.form.valid && addMember()" #f="ngForm" novalidate  >
+    <div class="row">
+
+      <div class="col">
+        <label for="nom">First name:</label>
+        <input type="text" class="form-control" placeholder="First name" 
+        [(ngModel)]="newMember.firstname" [ngModelOptions]="{standalone: true}" required
+        #firstname="ngModel">
+
+
+        <div style="color: red;" class="alert-danger" *ngIf="firstname.errors && f.submitted">
+          <div *ngIf="firstname.errors?.['required']">firstname is required</div>
+        </div>
+
+
+      </div>
+
+
+
+      <div class="col">
+        <label for="prenom">Last name:</label>
+        <input type="text" class="form-control" placeholder="Last name"
+        [(ngModel)]="newMember.lastname" [ngModelOptions]="{standalone: true}" required
+        #lastname="ngModel">
+
+        <div style="color: red;" class="alert-danger" *ngIf="lastname.errors && f.submitted">
+          <div *ngIf="lastname.errors?.['required']">lastname is required</div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="prenom">Phone Number:</label>
+        <input type="text" class="form-control" placeholder="Phone Number"
+        [(ngModel)]="newMember.phone" [ngModelOptions]="{standalone: true}" required
+        #phone="ngModel">
+
+        <div style="color: red;" class="alert-danger" *ngIf="phone.errors && f.submitted">
+          <div *ngIf="phone.errors?.['required']">phone is required</div>
+        </div>
+
+
+      </div>
+     
+
+
+      
+      <div class="col">
+        <label for="prenom">Email:</label>
+        <input type="text" class="form-control" placeholder="imageUrl"
+        [(ngModel)]="newMember.email" [ngModelOptions]="{standalone: true}" required
+        #email="ngModel">
+
+        <div style="color: red;" class="alert-danger" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors?.['required']">email is required</div>
+        </div>
+
+
+      </div>
+
+
+
+
+
+    </div>
+
+    <div class="row">
+
+ 
+      <div class="col">
+        <label for="prenom">imageUrl:</label>
+        <input type="text" class="form-control" placeholder="imageUrl"
+        [(ngModel)]="newMember.imageUrl" [ngModelOptions]="{standalone: true}" required
+        #imageUrl="ngModel">
+
+        <div style="color: red;" class="alert-danger" *ngIf="imageUrl.errors && f.submitted">
+          <div *ngIf="imageUrl.errors?.['required']">imageUrl is required</div>
+        </div>
+
+
+      </div>
+
+
+      <div class="col">
+        <label for="prenom">Role:</label>
+        <!-- <input type="text" class="form-control" placeholder="Role"
+        [(ngModel)]="newMember.role" [ngModelOptions]="{standalone: true}" required
+        #role="ngModel"> -->
+
+        <select class="form-control"  
+        [(ngModel)]="newMember.role" [ngModelOptions]="{standalone: true}" required
+        #role="ngModel">
+          
+            <option>Prisedent</option>
+            <option>Secretaire gn</option>
+            <option>Marketing</option>
+            <option>Finances</option>
+            <option>Responsable iot </option>
+            <option>Responsable dev </option>
+            <option>Member actif</option>
+            <option>Member</option>
+
+        </select>
+
+        <div style="color: red;" class="alert-danger" *ngIf="role.errors && f.submitted">
+          <div *ngIf="role.errors?.['required']">role is required</div>
+        </div>
+
+
+      </div>
+    
+    </div>
+
+   <br>
+    <button   type="submit" class="btn btn-info">Ajouter Member</button>
+  </form>
+   
+  
